@@ -13,11 +13,11 @@ def main(argv):
 		with open(csv_file, 'w', newline='') as csvfile:
 			csv_writer = csv.writer(csvfile, delimiter=',')
 			# grabbing column names
-			csv_writer.writerow(list(file[next(iter(file))][0].keys()))
+			csv_writer.writerow(['session_id'] + list(file[next(iter(file))][0].keys()))
 
-			for v in file.values():
+			for k, v in file.items():
 				for row in v:
-					csv_writer.writerow(list(row.values()))
+					csv_writer.writerow([k] + list(row.values()))
 
 
 if __name__ == "__main__":
